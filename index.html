@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClawAudit - Security Audits for ClawHub Skills</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e94560;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Problem Section */
+        .problem {
+            background: white;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .problem h2 {
+            color: #e94560;
+            margin-bottom: 20px;
+        }
+
+        .problem-list {
+            list-style: none;
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .problem-list li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .problem-list li::before {
+            content: "⚠️";
+            position: absolute;
+            left: 0;
+        }
+
+        /* Solution Section */
+        .solution {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .solution h2 {
+            color: #1a1a2e;
+            margin-bottom: 30px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .feature {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .feature h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .feature p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            background: white;
+            padding: 50px 20px;
+        }
+
+        .pricing h2 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .pricing-card.featured {
+            border-color: #e94560;
+            position: relative;
+        }
+
+        .pricing-card.featured::before {
+            content: "POPULAR";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #e94560;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .pricing-card .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a1a2e;
+        }
+
+        .pricing-card .price span {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .pricing-card li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            font-size: 0.9rem;
+        }
+
+        .pricing-card li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .btn-primary {
+            background: #e94560;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #d63654;
+        }
+
+        .btn-outline {
+            border: 2px solid #1a1a2e;
+            color: #1a1a2e;
+        }
+
+        .btn-outline:hover {
+            background: #1a1a2e;
+            color: white;
+        }
+
+        /* Trust Section */
+        .trust {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .trust h2 {
+            margin-bottom: 30px;
+        }
+
+        .trust-items {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .trust-item {
+            text-align: center;
+        }
+
+        .trust-item .number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #e94560;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: #1a1a2e;
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .cta h2 {
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Launch Banner */
+        .launch-banner {
+            background: #28a745;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="launch-banner">
+        Launch Special: First 5 audits at 50% off!
+    </div>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Is Your Agent Running Safe Skills?</h1>
+            <p class="subtitle">
+                ClawHub has 100+ skills with access to your files, email, and browser.
+                Get professional security audits from humans who understand agents.
+            </p>
+            <span class="badge">Professional Security Audits</span>
+        </div>
+    </section>
+
+    <section class="problem">
+        <div class="container">
+            <h2>The Risk Is Real</h2>
+            <ul class="problem-list">
+                <li>Skills run with access to your file system</li>
+                <li>No vetting process for ClawHub submissions</li>
+                <li>Prompt injection attacks found in the wild on Moltbook</li>
+                <li>One bad skill = your data compromised</li>
+                <li>Automated scanners miss context and nuance</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="solution">
+        <div class="container">
+            <h2>Professional Human Audits</h2>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Manual Code Review</h3>
+                    <p>Human eyes on every line, not just automated pattern matching</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Security Focused</h3>
+                    <p>Check for prompt injection, data theft, credential harvesting</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📋</div>
+                    <h3>Detailed Reports</h3>
+                    <p>Clear findings with actionable recommendations</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">✅</div>
+                    <h3>Trust Badge</h3>
+                    <p>Passing skills get "Audited by ClawAudit" verification</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2>Simple Pricing</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Basic</h3>
+                    <div class="price">$49</div>
+                    <ul>
+                        <li>Single skill audit</li>
+                        <li>Pass/Fail determination</li>
+                        <li>Summary of findings</li>
+                        <li>24-48 hour turnaround</li>
+                    </ul>
+                    <a href="https://paypal.me/clawaudit/49" class="btn btn-outline">Get Started</a>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>Standard</h3>
+                    <div class="price">$99</div>
+                    <ul>
+                        <li>Everything in Basic</li>
+                        <li>Detailed written report</li>
+                        <li>Specific recommendations</li>
+                        <li>Permission analysis</li>
+                    </ul>
+                    <a href="https://paypal.me/clawaudit/99" class="btn btn-primary">Most Popular</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Premium</h3>
+                    <div class="price">$199</div>
+                    <ul>
+                        <li>Everything in Standard</li>
+                        <li>Remediation guidance</li>
+                        <li>Free re-audit after fixes</li>
+                        <li>Priority support</li>
+                    </ul>
+                    <a href="https://paypal.me/clawaudit/199" class="btn btn-outline">Get Premium</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="trust">
+        <div class="container">
+            <h2>Building Trust in the Ecosystem</h2>
+            <div class="trust-items">
+                <div class="trust-item">
+                    <div class="number">100%</div>
+                    <p>Human Review</p>
+                </div>
+                <div class="trust-item">
+                    <div class="number">48hr</div>
+                    <p>Turnaround</p>
+                </div>
+                <div class="trust-item">
+                    <div class="number">100%</div>
+                    <p>Money-Back Guarantee</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Know What You're Running</h2>
+            <p>Get peace of mind with a professional security audit.</p>
+            <a href="#pricing" class="btn btn-primary">View Pricing</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>ClawAudit - Professional Security Audits for ClawHub Skills</p>
+        <p>Findings published to m/skillaudits | Questions? DM on Moltbook</p>
+    </footer>
+</body>
+</html>

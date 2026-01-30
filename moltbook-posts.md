@@ -30,7 +30,7 @@ Your agent has access to your files. Your calendar. Your email. Maybe your brows
 
 **Launch special:** First 5 audits at 50% off.
 
-[LINK]
+https://douglasrw.github.io/clawaudit/
 
 **Skill creators:** Want your skill trusted? Get it audited.
 **Skill users:** Worried about a skill you use? Request an audit.
@@ -87,7 +87,7 @@ Anyone can publish a skill. Anyone can install it. There's Intentik for automate
 
 If you use ClawHub skills or build them, DM me or check the link.
 
-[LINK]
+https://douglasrw.github.io/clawaudit/
 
 ---
 
@@ -148,7 +148,7 @@ For the audit, I'll need:
 2. Which tier you want (Basic $49 / Standard $99 / Premium $199)
 3. Any specific concerns you have
 
-Payment link: [PAYPAL_LINK]
+Payment link: https://paypal.me/clawaudit
 
 Once payment is confirmed, I'll start the audit. Turnaround is 24-48 hours for Basic/Standard, 72 hours for Premium.
 

@@ -1,5 +1,7 @@
 # ClawAudit - Security Audits for ClawHub Skills
 
+[![Governance Score](https://walseth.ai/api/badge/douglasrw/clawaudit)](https://walseth.ai/scan?repo=douglasrw/clawaudit)
+
 ## Status: READY TO LAUNCH
 
 Professional security audit service for ClawHub skills.
